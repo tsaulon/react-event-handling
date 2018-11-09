@@ -2,6 +2,22 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+class LoggingButton extends React.Component {
+  // This syntax ensures `this` is bound within handleClick.
+  // Warning: this is *experimental* syntax.
+  handleClick = () => {
+    console.log('this is:', this);
+  }
+
+  render() {
+    return (
+      <button onClick={e => this.handleClick(e)}>
+        Click me
+      </button>
+    );
+  }
+}
+
 class App extends Component {
 
   constructor(props) {
@@ -24,8 +40,6 @@ class App extends Component {
       lasers: state.lasers ? '' : 'pew pew!',
       instruction: state.instruction === 'Activate' ? 'Deactivate' : 'Activate'
     }));
-
-    console.log(this.state.lasers);
   }
 
 
@@ -38,6 +52,7 @@ class App extends Component {
           <button type="button" onClick={() => this.handleClick()}>
             {`${this.state.instruction} lasers`}
           </button>
+          <LoggingButton />
         </header>
       </div>
     );
