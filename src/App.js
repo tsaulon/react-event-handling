@@ -11,6 +11,7 @@ class App extends Component {
       instruction: 'Activate'
     }
 
+    //  Important: Changes to view during events require event binding
     this.handleClick = this.handleClick.bind(this);
   }
 
